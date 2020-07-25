@@ -16,7 +16,7 @@ def create(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save() 
-            return redirect('read')
+            return redirect('home')
     else:
         form = BlogPost()
         return render(request, 'write.html', {'form':form})
