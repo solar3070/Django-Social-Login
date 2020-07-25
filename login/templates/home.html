@@ -1,0 +1,152 @@
+{% load socialaccount %}
+{% providers_media_js %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/home.css' %}" type="text/css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Yummytime</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=c44yitoede"></script>
+</head>
+
+<body>
+    <div id="header">
+        <a href="{% url 'home' %}"><h1>Yummy<span style="color:rgb(123, 199, 0)">t</span>ime</h1></a>
+    </div>
+
+    <!--로그인-->
+    <div class="login">
+        <a id="write" href="{% url 'write' %}">write</a>
+        <a href="/accounts/signup">Join</a>
+
+        {% if user.is_authenticated %}
+        <a href="/accounts/logout">Logout</a>
+        <div class="ment">{{user.username}} 님이 로그인 중</div>
+
+        {% else %}
+        <a href="{% provider_login_url 'google' %}">Login</a>
+        <div class="ment">Please Login</div>
+
+        {% endif %}
+    </div>
+    <br><br>
+
+    <!--지도-->
+    <p id="txt">추천 맛집 <span style="color:rgb(123, 199, 0)">Best</span> 3</p>
+    <div id="container">
+        <div id="map"></div>
+        <div id="map2"></div>
+        <div id="map3"></div>
+    </div>
+    <script>
+        var HOME_PATH = window.HOME_PATH || '.';
+        var HOME_PATH2 = window.HOME_PATH2 || '.';
+        var HOME_PATH3 = window.HOME_PATH2 || '.';
+
+        var restaurant1 = new naver.maps.LatLng(37.6604156, 126.9885895),
+            map = new naver.maps.Map('map', {
+                center: restaurant1.destinationPoint(0, 300),
+                zoom: 15
+            }),
+            marker = new naver.maps.Marker({
+                map: map,
+                position: restaurant1
+            });
+        var restaurant2 = new naver.maps.LatLng(37.5492647, 127.1707719),
+            map2 = new naver.maps.Map('map2', {
+                center: restaurant2.destinationPoint(0, 300),
+                zoom: 15
+            }),
+            marker2 = new naver.maps.Marker({
+                map: map2,
+                position: restaurant2
+            });
+        var restaurant3 = new naver.maps.LatLng(37.5157109, 127.0451597),
+            map3 = new naver.maps.Map('map3', {
+                center: restaurant3.destinationPoint(0, 300),
+                zoom: 15
+            }),
+            marker3 = new naver.maps.Marker({
+                map: map3,
+                position: restaurant3
+            });
+
+        var contentString = [
+            '<div class="iw_inner" style="width:250px; height: 120px;">',
+            '   <h5>샘밭막국수</h5>',
+            '   <p><img src="{% static "샘밭막국수.jpg" %}" width="55" height="55" alt="샘밭막국수" class="thumb" />',
+            '   <br>강원도 춘천시 신북읍 신샘밭로 644 샘밭막국수<br />',
+            '   <span style="color:rgba(94, 153, 0, 1)">최고의 막국수집, 샘밭막국수!</span><br><a href="https://jobean0523.modoo.at/" target="_blank">jobean0523.modoo.at</a> | 033-242-1712',
+            '   </p>',
+            '</div>'
+        ].join('');
+        var contentString2 = [
+            '<div class="iw_inner" style="width:250px; height: 120px;">',
+            '   <h5>돈비어프라이드</h5>',
+            '   <p><img src="{% static "돈비어프라이드.jpg" %}" width="55" height="55" alt="돈비어프라이드" class="thumb" />',
+            '   <br>강동구 상일로 23 돈비어프라이드<br />',
+            '   <span style="color:rgba(94, 153, 0, 1)">맛있는 수제 맥주집을 찾는다면? <br>돈비어프라이드!</span> | 02-481-4440',
+            '   </p>',
+            '</div>'
+        ].join('');
+        var contentString3 = [
+            '<div class="iw_inner" style="width:250px; height: 120px;">',
+            '   <h5>사보텐</h5>',
+            '   <p><img src="{% static "사보텐.jpg" %}" width="55" height="55" alt="사보텐" class="thumb" />',
+            '   <br>서울 강남구 선릉로 663 사보텐 강남구청점<br />',
+            '   <span style="color:rgba(94, 153, 0, 1)">돈까스 덕후가 사랑하는 체인점, 사보텐!</span><br><a href="http://www.saboten.co.kr/" target="_blank">www.saboten.co.kr/</a> | 02-543-4510',
+            '   </p>',
+            '</div>'
+        ].join('');
+
+        var infowindow = new naver.maps.InfoWindow({
+            content: contentString
+        });
+        var infowindow2 = new naver.maps.InfoWindow({
+            content: contentString2
+        });
+        var infowindow3 = new naver.maps.InfoWindow({
+            content: contentString3
+        });
+
+        naver.maps.Event.addListener(marker, "click", function (e) {
+            if (infowindow.getMap()) {
+                infowindow.close();
+            } else {
+                infowindow.open(map, marker);
+            }
+        });
+        naver.maps.Event.addListener(marker2, "click", function (e) {
+            if (infowindow2.getMap()) {
+                infowindow2.close();
+            } else {
+                infowindow2.open(map2, marker2);
+            }
+        });
+        naver.maps.Event.addListener(marker3, "click", function (e) {
+            if (infowindow3.getMap()) {
+                infowindow3.close();
+            } else {
+                infowindow3.open(map3, marker3);
+            }
+        });
+
+        infowindow.open(map, marker);
+        infowindow2.open(map2, marker2);
+        infowindow3.open(map3, marker3);
+    </script>
+
+    <!--썸네일-->
+    <p id="txt2">맛집 리스트</p>
+    <div id="container2">
+        {% for blog in blog.all %}
+        <a href="{% url 'detail' blog.id %}"><img id="thumbnail" src="{{blog.image_thumbnail.url}}"></a>
+        {% endfor%}
+    </div>
+</body>
+
+</html>

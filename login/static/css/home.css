@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Caveat:wght@700&display=swap');
+@font-face { font-family: 'Recipekorea'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: '777Balsamtint'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/777Balsamtint.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'KOMACON'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/KOMACON.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+#map, #map2, #map3 {
+    width:300px; 
+    height:300px; 
+    margin:10px;
+    border: 3px solid rgb(191, 214, 168);
+    flex: auto;
+}
+
+#container {
+    width: 75%;
+    display: flex;
+    margin: 0 auto;
+}
+
+#container2 {
+    width: 75%;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login {
+    text-align: right;
+    background-color: black;
+    color: white;
+    font-family: 'Baloo 2', '777Balsamtint', cursive;
+    font-size: 16px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#write {
+    color:rgb(123, 199, 0);
+    font-family: 'Fugaz One', cursive;
+}
+
+.login a {
+    padding:0px 5px 0px 5px;
+}
+
+.login a:link, .login a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.login a:hover {
+    background-color: grey;
+}
+
+.ment {
+    background-color: white;
+    color: black;
+}
+
+#header {
+    background: url(../그림2.png);
+    background-size: 80px, cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Fugaz One', cursive;
+}
+
+#header a:link, #header a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+h5 {
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Recipekorea';
+    margin: 10px 0px 0px 0px;
+}
+
+#txt, #txt2 {
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Fugaz One', 'Recipekorea', cursive;
+    margin: 0px 0px 10px 0px;
+}
+
+#txt2 {
+    margin-top: 40px;
+}
+
+p {
+    font-family: '777Balsamtint';
+    text-align: center;
+}
+
+#thumbnail {
+    margin: 10px;
+}
+
+#thumbnail:hover {
+    opacity: 0.8;
+}
+
+#food {
+    width:300px;
+    height:300px;
+    margin:60px 0px 60px 0px;
+    border: 5px solid white;
+    border-right: 0px;
+}
+
+#text {
+    width:300px;
+    height:300px;
+    margin:60px 0px 60px 0px;
+    background-color: white;
+    border: 5px solid white;
+    border-left: 0px;
+    font-family: '777Balsamtint';
+    font-size: 20px;
+}
+
+#introduction {
+    text-align: center;
+    display: flex;
+    width: 74.3%;
+    margin:0 auto;
+    justify-content: center;
+    border: 5px solid rgba(191, 214, 168, 1);
+    background: url(../그림5.png);
+    background-size: 1250px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#box {
+    width: 74.3%;
+    margin:0 auto;
+    padding:25.125px 0px 25.125px 0px;
+    border: 5px solid rgba(191, 214, 168, 1);
+    text-align: center;
+    background: url(../그림5.png);
+    background-size: 1250px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#box p {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Baloo 2', '777Balsamtint', cursive;
+    margin-bottom: 5px;
+}
+
+.btn {
+    border: 1px solid black;
+    font-family: 'Baloo 2', '777Balsamtint', cursive;
+    font-size: 15px;
+    background-color:black;
+    color: white; 
+    padding:0px 5px 0px 5px;
+    text-decoration: none;
+}
+
+.btns {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.filebox label {
+    font-family: 'Baloo 2', '777Balsamtint', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    color: black; 
+}
+
+.btn:hover { 
+    background-color: grey;
+    border: 1px solid grey;
+}
+
+.filebox label:hover {
+    opacity: 0.5;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);   
+}
